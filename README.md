@@ -2,8 +2,8 @@
 
 ## Prerequisites
 
-1. Install minikube
-2. Install skaffold
+1. Install [minikube](https://minikube.sigs.k8s.io/docs/start/)
+2. Install [skaffold](https://skaffold.dev/docs/install/)
 
 ## Setup Kubernetes
 

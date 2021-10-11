@@ -1,0 +1,20 @@
+apiVersion: skaffold/v2beta24
+kind: Config
+build:
+  artifacts:
+  - image: node-example
+    context: backend
+profiles:
+- name: dev
+  activation:
+  - command: dev
+  build:
+    artifacts:
+    - image: node-example
+      context: backend
+      sync:
+        infer:
+        - src/**/*.js
+      docker:
+        buildArgs:
+          ENV: development

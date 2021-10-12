@@ -23,8 +23,6 @@ profiles:
         buildArgs:
           ENV: development
 - name: dev-knative
-#  activation:
-#  - command: dev
   build:
     artifacts:
     - image: node-example
@@ -38,10 +36,8 @@ profiles:
   patches:
     - op: replace
       path:  /deploy/kubectl/manifests/0
-      value: "knative/*.yaml"
+      value: "knative/service.yaml"
 - name: dev-knative-debug
-#  activation:
-#  - command: dev
   build:
     artifacts:
     - image: node-example
@@ -55,7 +51,7 @@ profiles:
   patches:
     - op: replace
       path:  /deploy/kubectl/manifests/0
-      value: "knative-debug/*.yaml"
+      value: "knative/service-debug.yaml"
 portForward:
   - resourceType: deployment
     resourceName: node-00001-deployment

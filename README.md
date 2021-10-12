@@ -32,8 +32,13 @@ npm run debug
 
 ## Bonus: Livereload with Knative
 
-Install knative using this [tutorial](https://github.com/csantanapr/knative-minikube) from nightly
+Install knative using this [tutorial](https://github.com/csantanapr/knative-minikube) from nightly to be able to use debug with knative
+To make enable knative for debug bellow enable this two features:
+- enable init containers https://knative.dev/development/admin/serving/feature-flags/#emptydir
+- enable emptyDir https://knative.dev/development/admin/serving/feature-flags/#emptydir
 
+
+To develop
 ```
 npm run dev-knative
 ```
@@ -43,8 +48,10 @@ To get url of knative service
 npm run dev-kative-url
 ```
 
->Note: debug is not supported for knative with skaffold see issues
+To debug
+```
+npm run dev-knative-debug
+```
 
-Experiment knative debu
-- enable init containers https://knative.dev/development/admin/serving/feature-flags/#emptydir
-- enable emptyDir https://knative.dev/development/admin/serving/feature-flags/#emptydir
+>Note: debug is not supported for knative with skaffold out of the box, see issue https://github.com/GoogleContainerTools/skaffold/issues/4702
+

@@ -32,11 +32,24 @@ npm run debug
 
 ## Bonus: Livereload with Knative
 
-Install knative using this [tutorial](https://github.com/csantanapr/knative-minikube) from nightly to be able to use debug with knative
-To make enable knative for debug bellow enable this two features:
+- install minikube (if not already installed)
+- minikube start (if not already running)
+- run in a new terminal `minikube tunnnel`
+- run the install script `./knative/install.sh`
+- Enable debug for knative with the following configs:
+    ```bash
+    kubectl patch configmap -n knative-serving config-features -p "{\"data\": {\"kubernetes.podspec-volumes-emptydir\": \"enabled\"}}"
+    kubectl patch configmap -n knative-serving config-features -p "{\"data\": {\"kubernetes.podspec-init-containers\": \"enabled\"}}"
+    ```
+More details here:
 - enable init containers https://knative.dev/development/admin/serving/feature-flags/#emptydir
 - enable emptyDir https://knative.dev/development/admin/serving/feature-flags/#emptydir
 
+Setup
+```
+eval $(minikube -p minikube docker-env)
+npm run setup
+```
 
 To develop
 ```

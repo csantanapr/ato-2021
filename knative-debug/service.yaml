@@ -1,0 +1,31 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: node
+spec:
+  template:
+    metadata:
+        annotations:
+          autoscaling.knative.dev/minScale: "1"
+    spec:
+      initContainers:
+        - name: install-nodejs-debug-support
+          image: gcr.io/k8s-skaffold/skaffold-debug-support/nodejs
+          volumeMounts:
+          - mountPath: /dbg
+            name: debugging-support-files
+      containers:
+        - image: node-example
+          volumeMounts:
+            - name: debugging-support-files
+              mountPath: /dbg
+          env:
+          - name: PATH
+            value: /dbg/nodejs/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+          args:
+          - /bin/sh
+          - -c
+          - npm run $NODE_ENV --node-options=--inspect=0.0.0.0:9229
+      volumes:
+        - name: debugging-support-files
+          emptyDir: {}

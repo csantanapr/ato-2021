@@ -4,10 +4,14 @@ build:
   artifacts:
   - image: node-example
     context: backend
+deploy:
+  kubectl:
+    manifests:
+    - "k8s/*.yaml"
 profiles:
 - name: dev
-  activation:
-  - command: dev
+#  activation:
+#  - command: dev
   build:
     artifacts:
     - image: node-example
@@ -18,3 +22,41 @@ profiles:
       docker:
         buildArgs:
           ENV: development
+- name: dev-knative
+#  activation:
+#  - command: dev
+  build:
+    artifacts:
+    - image: node-example
+      context: backend
+      sync:
+        infer:
+        - src/**/*.js
+      docker:
+        buildArgs:
+          ENV: development
+  patches:
+    - op: replace
+      path:  /deploy/kubectl/manifests/0
+      value: "knative/*.yaml"
+- name: dev-knative-debug
+#  activation:
+#  - command: dev
+  build:
+    artifacts:
+    - image: node-example
+      context: backend
+      sync:
+        infer:
+        - src/**/*.js
+      docker:
+        buildArgs:
+          ENV: development
+  patches:
+    - op: replace
+      path:  /deploy/kubectl/manifests/0
+      value: "knative-debug/*.yaml"
+portForward:
+  - resourceType: deployment
+    resourceName: node-00001-deployment
+    port: 9229

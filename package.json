@@ -4,8 +4,12 @@
   "description": "all things open 2021 demo",
   "main": "index.js",
   "scripts": {
+    "setup": "skaffold config set default-repo dev.local",
     "dev": "skaffold dev --port-forward",
-    "debug": "skaffold debug --port-forward"
+    "debug": "skaffold debug --port-forward",
+    "dev-knative": "skaffold dev -p dev-knative",
+    "dev-knative-debug": "skaffold dev -p dev-knative-debug",
+    "dev-knative-url": "kubectl get ksvc node -o jsonpath='{.status.url}\n'"
   },
   "license": "Apache-2.0"
 }

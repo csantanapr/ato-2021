@@ -1,0 +1,53 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    debug.cloud.google.com/config: '{"node":{"artifact":"node-example","runtime":"nodejs","workingDir":"/home/node/app","ports":{"devtools":9229}}}'
+  creationTimestamp: "2021-10-12T02:19:43Z"
+  generateName: node-54fcb99cfd-
+  labels:
+    app: node
+    pod-template-hash: 54fcb99cfd
+    skaffold.dev/run-id: 2c8985dd-8fd0-45cc-a909-f5dd2346262b
+  name: node-54fcb99cfd-vbnpj
+  namespace: default
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: ReplicaSet
+    name: node-54fcb99cfd
+    uid: e0fa84d6-9a76-4042-bcb1-757eeff40250
+  resourceVersion: "90998"
+  uid: 2320dc3e-c17b-43bd-8f9d-4d675ab25565
+spec:
+  containers:
+  - args:
+    - /bin/sh
+    - -c
+    - npm run $NODE_ENV --node-options=--inspect=0.0.0.0:9229
+    env:
+    - name: PATH
+      value: /dbg/nodejs/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+    image: dev.local/node-example:cc1368b75b0c4e8d11e512cece12b79d70aad9222151bbaaac36f3f6338fda12
+    imagePullPolicy: IfNotPresent
+    name: node
+    ports:
+    - containerPort: 8080
+      protocol: TCP
+    - containerPort: 9229
+      name: devtools
+      protocol: TCP
+    volumeMounts:
+    - mountPath: /dbg
+      name: debugging-support-files
+  initContainers:
+  - image: gcr.io/k8s-skaffold/skaffold-debug-support/nodejs
+    imagePullPolicy: Always
+    name: install-nodejs-debug-support
+    volumeMounts:
+    - mountPath: /dbg
+      name: debugging-support-files
+  volumes:
+  - emptyDir: {}
+    name: debugging-support-files

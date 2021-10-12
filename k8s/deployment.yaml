@@ -4,7 +4,7 @@ metadata:
   name: node
 spec:
   ports:
-  - port: 3000
+  - port: 8080
   type: LoadBalancer
   selector:
     app: node
@@ -26,4 +26,4 @@ spec:
       - name: node
         image: node-example
         ports:
-        - containerPort: 3000
+        - containerPort: 8080

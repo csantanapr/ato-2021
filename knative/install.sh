@@ -28,6 +28,13 @@ if [ "$INGRESS_HOST" == "localhost" ]; then INGRESS_HOST=127.0.0.1; fi
 KNATIVE_DOMAIN=$INGRESS_HOST.nip.io
 kubectl patch configmap -n knative-serving config-domain -p "{\"data\": {\"$KNATIVE_DOMAIN\": \"\"}}"
 
+# experimental features
+# More details here:
+# - enable init containers https://knative.dev/development/admin/serving/feature-flags/#emptydir
+# - enable emptyDir https://knative.dev/development/admin/serving/feature-flags/#emptydir
+kubectl patch configmap -n knative-serving config-features -p "{\"data\": {\"kubernetes.podspec-volumes-emptydir\": \"enabled\"}}"
+kubectl patch configmap -n knative-serving config-features -p "{\"data\": {\"kubernetes.podspec-init-containers\": \"enabled\"}}"
+
 DURATION=$(($(date +%s) - $STARTTIME))
 echo -e "\033[0;92m 🚀 Knative install took: $(($DURATION / 60))m$(($DURATION % 60))s \033[0m"
 echo -e "\033[0;92m 🎉 Now have some fun with Serverless and Event Driven Apps \033[0m"

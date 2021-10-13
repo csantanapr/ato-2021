@@ -32,18 +32,9 @@ npm run debug
 
 ## Bonus: Livereload with Knative
 
-- install minikube (if not already installed)
 - minikube start (if not already running)
 - run in a new terminal `minikube tunnnel`
 - run the install script `./knative/install.sh`
-- Enable debug for knative with the following configs:
-    ```bash
-    kubectl patch configmap -n knative-serving config-features -p "{\"data\": {\"kubernetes.podspec-volumes-emptydir\": \"enabled\"}}"
-    kubectl patch configmap -n knative-serving config-features -p "{\"data\": {\"kubernetes.podspec-init-containers\": \"enabled\"}}"
-    ```
-More details here:
-- enable init containers https://knative.dev/development/admin/serving/feature-flags/#emptydir
-- enable emptyDir https://knative.dev/development/admin/serving/feature-flags/#emptydir
 
 Setup
 ```
@@ -66,5 +57,5 @@ To debug
 npm run dev-knative-debug
 ```
 
->Note: debug is not supported for knative with skaffold out of the box, see issue https://github.com/GoogleContainerTools/skaffold/issues/4702
+>Note: debug is not supported for knative with skaffold out of the box, we are implementing a workaround in this repo. For more info see issue https://github.com/GoogleContainerTools/skaffold/issues/4702
 

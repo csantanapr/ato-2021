@@ -10,8 +10,8 @@ deploy:
     - "k8s/*.yaml"
 profiles:
 - name: dev
-#  activation:
-#  - command: dev
+  activation:
+  - command: dev
   build:
     artifacts:
     - image: node-example

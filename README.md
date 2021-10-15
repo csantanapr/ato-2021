@@ -49,7 +49,7 @@ npm run dev-knative
 
 To get url of knative service
 ```
-npm run dev-kative-url
+npm run dev-knative-url
 ```
 
 To debug

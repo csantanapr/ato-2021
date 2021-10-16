@@ -22,7 +22,7 @@ profiles:
       docker:
         buildArgs:
           ENV: development
-- name: dev-knative
+- name: knative
   build:
     artifacts:
     - image: node-example
@@ -37,7 +37,7 @@ profiles:
     - op: replace
       path:  /deploy/kubectl/manifests/0
       value: "knative/service.yaml"
-- name: dev-knative-debug
+- name: dev-knative
   build:
     artifacts:
     - image: node-example
@@ -52,7 +52,10 @@ profiles:
     - op: replace
       path:  /deploy/kubectl/manifests/0
       value: "knative/service-debug.yaml"
+    - op: replace
+      path:  /portForward/0/resourceName
+      value: "node-00001-deployment"
 portForward:
   - resourceType: deployment
-    resourceName: node-00001-deployment
+    resourceName: node
     port: 9229

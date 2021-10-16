@@ -2,60 +2,32 @@
 
 ## Prerequisites
 
-1. Install [minikube](https://minikube.sigs.k8s.io/docs/start/)
-2. Install [skaffold](https://skaffold.dev/docs/install/)
+See [DEVOPS.md](DEVOPS.md)
 
-## Start Kubernetes
 
-```
-minikube start
-```
+## Knative
 
-## Setup
-
-```
-eval $(minikube -p minikube docker-env)
-npm run setup
-```
-
-## Livereload
-
+start app in cluster for dev and debug
 ```
 npm run dev
 ```
 
-## Debug
-
+Get the url of the knative service and open browser
 ```
-npm run debug
-```
-
-## Bonus: Livereload with Knative
-
-- minikube start (if not already running)
-- run in a new terminal `minikube tunnnel`
-- run the install script `./knative/install.sh`
-
-Setup
-```
-eval $(minikube -p minikube docker-env)
-npm run setup
+npm run url
 ```
 
-To develop
+## (Optional) Kubernetes
+
+start app in cluster for dev
 ```
-npm run dev-knative
+npm run dev-kube
 ```
 
-To get url of knative service
-```
-npm run dev-knative-url
-```
 
-To debug
+start app in cluster for debugging
 ```
 npm run dev-knative-debug
 ```
 
->Note: debug is not supported for knative with skaffold out of the box, we are implementing a workaround in this repo. For more info see issue https://github.com/GoogleContainerTools/skaffold/issues/4702
 

@@ -1,8 +1,8 @@
 {
     // The following will hide the js and map files in the editor
     "files.exclude": {
-        "**/.devops": false,
-        "skaffold.yaml": false,
+        "**/.devops": true,
+        "skaffold.yaml": true,
         "Dockerfile": true,
         ".dockerignore": true
     }

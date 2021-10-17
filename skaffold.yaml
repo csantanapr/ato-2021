@@ -7,11 +7,11 @@ build:
 deploy:
   kubectl:
     manifests:
-    - "k8s/*.yaml"
+    - ".devops/k8s/*.yaml"
     hooks:
       after:
         - host:
-            command: ["sh", "-c", "kubectl get ksvc node -o jsonpath='{.status.url}\n'"]
+            command: ["sh", "-c", "kubectl get ksvc node -o jsonpath='{.status.url}\n' || true"]
 profiles:
 - name: dev
   activation:

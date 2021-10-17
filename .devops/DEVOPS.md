@@ -23,7 +23,7 @@ minikube tunnel
 
 run the install script
 ```
-./knative/install.sh
+.devops/knative/install.sh
 ```
 >Note: debug is not supported for knative with skaffold out of the box, we are implementing a workaround in this repo. For more info see issue https://github.com/GoogleContainerTools/skaffold/issues/4702
 

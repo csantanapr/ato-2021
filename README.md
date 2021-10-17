@@ -17,6 +17,10 @@ Get the url of the knative service and open browser
 npm run url
 ```
 
+## Deploy the App on IBM Code Engine
+Follow the tutorial [Building your first container image from source code](https://cloud.ibm.com/docs/codeengine?topic=codeengine-getting-started#build-image-gs)
+<img src=".devops/code-engine/ibm.jpg" width="400" />
+
 ## (Optional) Kubernetes
 
 start app in cluster for dev

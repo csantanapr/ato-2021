@@ -3,7 +3,7 @@ kind: Config
 build:
   artifacts:
   - image: node-example
-    context: backend
+    context: .
 deploy:
   kubectl:
     manifests:
@@ -15,7 +15,7 @@ profiles:
   build:
     artifacts:
     - image: node-example
-      context: backend
+      context: .
       sync:
         infer:
         - src/**/*.js
@@ -26,7 +26,7 @@ profiles:
   build:
     artifacts:
     - image: node-example
-      context: backend
+      context: .
       sync:
         infer:
         - src/**/*.js
@@ -41,7 +41,7 @@ profiles:
   build:
     artifacts:
     - image: node-example
-      context: backend
+      context: .
       sync:
         infer:
         - src/**/*.js

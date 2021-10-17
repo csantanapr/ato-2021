@@ -1,0 +1,8 @@
+node_modules
+*.swp
+*.md
+LICENSE
+k8s/
+knative/
+skaffold.yaml
+

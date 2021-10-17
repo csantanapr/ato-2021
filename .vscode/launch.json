@@ -6,7 +6,7 @@
     "configurations": [
         {
             "address": "localhost",
-            "localRoot": "${workspaceFolder}/backend/src",
+            "localRoot": "${workspaceFolder}/src",
             "name": "Attach to Remote",
             "port": 9229,
             "remoteRoot": "/home/node/app/src",

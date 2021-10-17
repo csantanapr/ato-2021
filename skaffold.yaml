@@ -8,6 +8,10 @@ deploy:
   kubectl:
     manifests:
     - "k8s/*.yaml"
+    hooks:
+      after:
+        - host:
+            command: ["sh", "-c", "kubectl get ksvc node -o jsonpath='{.status.url}\n'"]
 profiles:
 - name: dev
   activation:
@@ -36,7 +40,7 @@ profiles:
   patches:
     - op: replace
       path:  /deploy/kubectl/manifests/0
-      value: "knative/service.yaml"
+      value: ".devops/knative/service.yaml"
 - name: dev-knative
   build:
     artifacts:
@@ -51,7 +55,7 @@ profiles:
   patches:
     - op: replace
       path:  /deploy/kubectl/manifests/0
-      value: "knative/service-debug.yaml"
+      value: ".devops/knative/service-debug.yaml"
     - op: replace
       path:  /portForward/0/resourceName
       value: "node-00001-deployment"

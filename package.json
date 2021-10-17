@@ -9,11 +9,12 @@
     "development": "nodemon src/index.js",
     "setup": "skaffold config set default-repo dev.local",
     "dev": "npm run dev-knative",
+    "dev-knative": "skaffold dev -p dev-knative",
+    "delete": "skaffold delete -p knative",
     "url": "kubectl get ksvc node -o jsonpath='{.status.url}\n'",
     "run": "skaffold run -p knative",
     "kube-debug": "skaffold debug --port-forward",
-    "kube-dev": "skaffold dev --port-forward",
-    "dev-knative": "skaffold dev -p dev-knative"
+    "kube-dev": "skaffold dev --port-forward"
   },
   "dependencies": {
     "express": "^4.16.4"

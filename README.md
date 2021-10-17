@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-See [DEVOPS.md](DEVOPS.md)
+See [DEVOPS.md](.devops/DEVOPS.md)
 
 
 ## Knative

@@ -8,13 +8,17 @@
     "start": "npm run production",
     "development": "nodemon src/index.js",
     "setup": "skaffold config set default-repo dev.local",
-    "dev": "npm run dev-knative",
-    "dev-knative": "skaffold dev -p dev-knative",
-    "delete": "skaffold delete -p knative",
-    "url": "kubectl get ksvc node -o jsonpath='{.status.url}\n'",
-    "run": "skaffold run -p knative",
-    "kube-debug": "skaffold debug --port-forward",
-    "kube-dev": "skaffold dev --port-forward"
+    "dev": "npm run knative-dev-debug",
+    "delete": "npm run knative-delete",
+    "run": "npm run knative-run",
+    "url": "npm run knative-url",
+    "knative-dev-debug": "skaffold dev -p dev-knative",
+    "knative-delete": "skaffold delete -p knative",
+    "knative-run": "skaffold run -p knative",
+    "knative-url": "kubectl get ksvc node -o jsonpath='{.status.url}\n'",
+    "kube-dev": "skaffold dev",
+    "kube-debug": "skaffold debug",
+    "kube-delete": "skaffold delete -p dev"
   },
   "dependencies": {
     "express": "^4.16.4"

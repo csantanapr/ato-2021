@@ -12,9 +12,9 @@ start app in cluster for dev and debug
 npm run dev
 ```
 
-Get the url of the knative service and open browser
+Open knative service on the browser
 ```
-npm run url
+open http://localhost:8080
 ```
 
 ## Deploy the App on IBM Code Engine

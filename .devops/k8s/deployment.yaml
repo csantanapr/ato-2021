@@ -18,11 +18,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: node
+  name: node-dev
 spec:
   ports:
   - port: 8080
     name: http
+  - port: 9229
+    name: dbg
   type: LoadBalancer
   selector:
     app: node

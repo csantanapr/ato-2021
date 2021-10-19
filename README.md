@@ -19,6 +19,8 @@ Open knative service on the browser
 open http://localhost:8080
 ```
 
+Make a change to `src/index.js` and refresh browser, attach debugger with vscode or any nodejs debugger and set a brake point, refresh the browser again.
+
 ## (Optional) Deploy the App on IBM Code Engine
 Follow the tutorial [Building your first container image from source code](https://cloud.ibm.com/docs/codeengine?topic=codeengine-getting-started#build-image-gs)
 <img src=".devops/code-engine/ibm.jpg" width="400" />

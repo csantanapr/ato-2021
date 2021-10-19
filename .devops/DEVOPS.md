@@ -8,6 +8,7 @@
 ```
 minikube start
 ```
+
 setup docker build and registry
 ```
 eval $(minikube -p minikube docker-env)
@@ -16,7 +17,7 @@ npm run setup
 
 ## Install Knative
 
-run in a new terminal
+run in a new terminal (before running `install.sh`)
 ```
 minikube tunnel
 ```

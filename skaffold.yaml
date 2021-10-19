@@ -14,8 +14,6 @@ deploy:
             command: ["sh", "-c", "kubectl get ksvc node -o jsonpath='{.status.url}\n' || true"]
 profiles:
 - name: dev
-  activation:
-  - command: dev
   build:
     artifacts:
     - image: node-example
@@ -29,6 +27,8 @@ profiles:
   patches:
     - op: remove
       path: /portForward/1
+    - op: remove
+      path: /deploy/kubectl/hooks
 - name: knative
   build:
     artifacts:

@@ -16,8 +16,8 @@
     "knative-delete": "skaffold delete -p knative-debug",
     "knative-run": "skaffold run -p knative",
     "knative-url": "kubectl get ksvc node -o jsonpath='{.status.url}\n'",
-    "kube-dev": "skaffold dev",
-    "kube-debug": "skaffold debug",
+    "kube-dev": "skaffold dev -p dev",
+    "kube-debug": "skaffold debug -p dev",
     "kube-delete": "skaffold delete -p dev"
   },
   "dependencies": {

@@ -1,4 +1,4 @@
-FROM node:14.9-alpine
+FROM quay.io/csantanapr/node:16.12.0-alpine
 
 USER node
 RUN mkdir /home/node/app
